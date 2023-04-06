@@ -1,0 +1,6 @@
+selenium
+pandas
+tqdm
+python-dotenv
+openpyxl
+googlemaps
