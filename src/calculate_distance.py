@@ -12,7 +12,7 @@ PROPERTIES_FILE_PATH = '../properties.csv'
 GOOGLE_MAP_API_KEY = os.environ.get('GOOGLE_MAP_API_KEY')
 ORIGIN = "Downtown Toronto, Old Toronto, Toronto, ON"
 OUTPUT_FILE_PATH = '../properties_with_distance.csv'
-DEPARTURE_TIME = datetime.datetime.combine(datetime.date.today() + datetime.timedelta(days=1), datetime.time(hour=8))
+DEPARTURE_TIME = datetime.datetime.combine(datetime.date.today() + datetime.timedelta(days=3), datetime.time(hour=8))
 CHUNK_SIZE = 25
 
 #%%
@@ -74,10 +74,6 @@ for i in tqdm(range(0, df.shape[0], CHUNK_SIZE)):
 
 #%%
 df = pd.DataFrame(results)
-df.to_csv(OUTPUT_FILE_PATH, index=False)
-
-#%%
-df = pd.read_csv(OUTPUT_FILE_PATH)
 results = []
 for idx, row in df.iterrows():
     row['transit_duration_min'] = None
@@ -89,7 +85,7 @@ for idx, row in df.iterrows():
     results.append(row)
 
 df = pd.DataFrame(results)
-df.to_csv('../properties_with_distance2.csv', index=False)
+df.to_csv(OUTPUT_FILE_PATH, index=False)
 
 
 # %%

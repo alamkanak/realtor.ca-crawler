@@ -82,7 +82,7 @@ while True:
     next_link = driver.find_elements(By.CSS_SELECTOR, ".lnkNextResultsPage")
     if len(next_link) == 0:
         break 
-    if next_link.get_attribute("disabled") == "disabled":
+    if next_link[0].get_attribute("disabled") == "disabled":
         break
     
     # Click on the next page link
